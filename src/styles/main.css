@@ -1,0 +1,70 @@
+@tailwind preflight;
+@tailwind components;
+@tailwind utilities;
+@import 'grid.css';
+@import 'periodicTable.css';
+@import 'markdown.css';
+
+main {
+  transition: all 100ms ease-in;
+  transition-property: background-color, color, a;
+
+  /* default is dark theme */
+  background-color: #333;
+  color: #fafafa;
+}
+
+a,
+a:visited {
+  color: #01ff70;
+}
+
+a:hover,
+a:focus,
+a:active {
+  color: #2ecc40;
+}
+
+/* light theme */
+
+main.light-theme {
+  background-color: #fafafa;
+  color: #333;
+}
+
+main.light-theme a,
+main.light-theme a:visited {
+  color: blue;
+}
+
+main.light-theme a:hover,
+main.light-theme a:focus,
+main.light-theme a:active {
+  color: blue;
+}
+
+/* Utilities */
+
+.blur {
+  filter: blur(5px);
+}
+
+.trans {
+  transition: all 0.25s;
+}
+
+.trans-slow {
+  transition-duration: 0.5s;
+}
+
+.trans-slower {
+  transition-duration: 0.5s;
+}
+
+.trans-fast {
+  transition-duration: 0.15s;
+}
+
+.trans-faster {
+  transition-duration: 0.075s;
+}

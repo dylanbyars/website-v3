@@ -1,0 +1,30 @@
+.ptable-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: 'alkali . . . . . . . . . . . . . . . . nobles' 'alkali alkaline-earth . . . . . . . . . . metalloids-ish metalloids-ish metalloids-ish metalloids-ish metalloids-ish nobles' 'alkali alkaline-earth . . . . . . . . . . metalloids-ish metalloids-ish metalloids-ish metalloids-ish metalloids-ish nobles' 'alkali alkaline-earth metals metals metals metals metals metals metals metals metals metals metalloids-ish metalloids-ish metalloids-ish metalloids-ish metalloids-ish nobles' 'alkali alkaline-earth metals metals metals metals metals metals metals metals metals metals metalloids-ish metalloids-ish metalloids-ish metalloids-ish metalloids-ish nobles' 'alkali alkaline-earth metals metals metals metals metals metals metals metals metals metals metalloids-ish metalloids-ish metalloids-ish metalloids-ish metalloids-ish nobles' 'alkali alkaline-earth metals metals metals metals metals metals metals metals metals metals metalloids-ish metalloids-ish metalloids-ish metalloids-ish metalloids-ish nobles' '. . . . . . . . . . . . . . . . . .' '. . . weirdos weirdos weirdos weirdos weirdos weirdos weirdos weirdos weirdos weirdos weirdos weirdos weirdos weirdos weirdos' '. . . weirdos weirdos weirdos weirdos weirdos weirdos weirdos weirdos weirdos weirdos weirdos weirdos weirdos weirdos weirdos';
+}
+
+.alkali {
+  grid-area: alkali;
+}
+
+.alkaline-earth {
+  grid-area: alkaline-earth;
+}
+
+.metals {
+  grid-area: metals;
+}
+
+.metalloids-ish {
+  grid-area: metalloids-ish;
+}
+
+.nobles {
+  grid-area: nobles;
+}
+
+.weirdos {
+  grid-area: weirdos;
+}

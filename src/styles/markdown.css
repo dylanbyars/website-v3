@@ -1,0 +1,150 @@
+.markdown {
+  min-height: 100%;
+  font-size: 18px;
+  font-family: 'Courier New';
+  line-height: 1.45;
+  max-width: 48rem;
+  padding: 0.25rem;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4 {
+  margin: 1.414rem 0 0.5rem;
+  font-weight: inherit;
+  line-height: 1.42;
+}
+
+.markdown h1 {
+  margin-top: 0;
+  font-size: 3.998rem;
+}
+
+.markdown h2 {
+  font-size: 2.827rem;
+}
+
+.markdown h3 {
+  font-size: 1.999rem;
+}
+
+.markdown h4 {
+  font-size: 1.414rem;
+}
+
+.markdown h5 {
+  font-size: 1.121rem;
+}
+
+.markdown h6 {
+  font-size: 0.88rem;
+}
+
+.markdown p {
+  font-size: 1rem;
+  margin-bottom: 1.3rem;
+}
+
+.markdown small {
+  font-size: 0.707em;
+}
+
+.markdown pre,
+.markdown code {
+  font-family: Menlo, Monaco, 'Courier New', monospace;
+}
+
+.markdown pre {
+  padding: 0.5rem;
+  line-height: 1.25;
+  overflow-x: scroll;
+  /* background-color: #333; */
+}
+
+.markdown blockquote {
+  /* border-left: 3px solid #01ff70; */
+  padding-left: 1rem;
+}
+
+.markdown img,
+.markdown canvas,
+.markdown iframe,
+.markdown video,
+.markdown svg,
+.markdown select,
+.markdown textarea {
+  max-width: 100%;
+}
+
+@media screen and (min-width: 32rem) and (max-width: 48rem) {
+  .markdown {
+    font-size: 15px;
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  .markdown {
+    font-size: 16px;
+  }
+}
+
+@media print {
+  *,
+  *:before,
+  *:after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: ' (' attr(href) ')';
+  }
+
+  abbr[title]:after {
+    content: ' (' attr(title) ')';
+  }
+
+  a[href^='#']:after,
+  a[href^='javascript:']:after {
+    content: '';
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
