@@ -3,44 +3,29 @@
 @tailwind utilities;
 @import 'grid.css';
 @import 'periodicTable.css';
+@import 'cellularAutomaton.css';
 @import 'markdown.css';
 
-main {
-  transition: all 100ms ease-in;
-  transition-property: background-color, color, a;
-
-  /* default is dark theme */
-  background-color: #333;
-  color: #fafafa;
+a {
+  text-decoration: none;
 }
 
-a,
-a:visited {
-  color: #01ff70;
+.link,
+.link:visited {
+  @apply text-yellow-lighter;
+  @apply px-2;
+  @apply py-1;
+  @apply rounded;
+  text-decoration: none;
+  transition: all 0.1s ease-in-out;
+  transition-property: color background-color;
 }
 
-a:hover,
-a:focus,
-a:active {
-  color: #2ecc40;
-}
-
-/* light theme */
-
-main.light-theme {
-  background-color: #fafafa;
-  color: #333;
-}
-
-main.light-theme a,
-main.light-theme a:visited {
-  color: blue;
-}
-
-main.light-theme a:hover,
-main.light-theme a:focus,
-main.light-theme a:active {
-  color: blue;
+.link:hover,
+.link:focus,
+.link:active {
+  @apply bg-yellow-lighter;
+  @apply text-black;
 }
 
 /* Utilities */

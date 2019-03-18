@@ -1,91 +1,78 @@
 .markdown {
-  min-height: 100%;
-  font-size: 18px;
   font-family: 'Courier New';
-  line-height: 1.45;
-  max-width: 48rem;
-  padding: 0.25rem;
+  @apply text-lg;
+  @apply leading-normal;
+  @apply max-w-lg;
+  @apply p-3;
 }
 
 .markdown h1,
 .markdown h2,
 .markdown h3,
 .markdown h4 {
-  margin: 1.414rem 0 0.5rem;
-  font-weight: inherit;
-  line-height: 1.42;
+  @apply mt-3;
+  @apply mb-1;
+  @apply leading-loose;
 }
 
 .markdown h1 {
-  margin-top: 0;
-  font-size: 3.998rem;
+  @apply mt-0;
+  @apply text-5xl;
 }
 
 .markdown h2 {
-  font-size: 2.827rem;
+  @apply text-4xl;
 }
 
 .markdown h3 {
-  font-size: 1.999rem;
+  @apply text-3xl;
 }
 
 .markdown h4 {
-  font-size: 1.414rem;
+  @apply text-2xl;
 }
 
 .markdown h5 {
-  font-size: 1.121rem;
+  @apply text-xl;
 }
 
 .markdown h6 {
-  font-size: 0.88rem;
+  @apply text-lg;
 }
 
 .markdown p {
-  font-size: 1rem;
-  margin-bottom: 1.3rem;
+  @apply mb-1;
+  @apply text-base;
+}
+
+.markdown ul,
+.markdown ol {
+  @apply my-3;
+  @apply pl-4;
+  list-style-type: circle;
+}
+
+.markdown li {
+  @apply my-3;
 }
 
 .markdown small {
-  font-size: 0.707em;
+  @apply text-sm;
 }
 
-.markdown pre,
-.markdown code {
-  font-family: Menlo, Monaco, 'Courier New', monospace;
+.markdown hr {
+  height: 1rem;
 }
 
-.markdown pre {
-  padding: 0.5rem;
-  line-height: 1.25;
-  overflow-x: scroll;
-  /* background-color: #333; */
-}
-
-.markdown blockquote {
-  /* border-left: 3px solid #01ff70; */
-  padding-left: 1rem;
-}
-
-.markdown img,
-.markdown canvas,
-.markdown iframe,
-.markdown video,
-.markdown svg,
-.markdown select,
-.markdown textarea {
-  max-width: 100%;
-}
-
-@media screen and (min-width: 32rem) and (max-width: 48rem) {
+@screen md {
   .markdown {
-    font-size: 15px;
+    @apply text-lg;
   }
 }
 
-@media screen and (min-width: 48rem) {
+@screen lg {
   .markdown {
-    font-size: 16px;
+    @apply text-xl;
   }
 }
 
@@ -117,23 +104,38 @@
     content: '';
   }
 
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
+  .markdown {
+    @apply text-base;
+    @apply leading-normal;
   }
 
-  thead {
-    display: table-header-group;
+  .markdown h1,
+  .markdown h2,
+  .markdown h3,
+  .markdown h4 {
+    @apply my-1;
   }
 
-  tr,
-  img {
-    page-break-inside: avoid;
+  .markdown p {
+    @apply mb-1;
   }
 
-  img {
-    max-width: 100% !important;
+  .markdown ul,
+  .markdown ol {
+    @apply my-0;
+    list-style-type: circle;
+  }
+
+  .markdown li {
+    @apply my-2;
+  }
+
+  .markdown small {
+    @apply text-sm;
+  }
+
+  .markdown hr {
+    height: 0.5rem;
   }
 
   p,

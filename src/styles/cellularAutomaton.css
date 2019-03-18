@@ -1,0 +1,10 @@
+.cellular-automaton-grid {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-area: '.';
+}
+
+.cellular-automaton-grid .on {
+  /* grid-a */
+}

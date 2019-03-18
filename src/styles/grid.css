@@ -1,30 +1,19 @@
 main {
   display: grid !important;
   grid-template-columns: auto;
-  grid-template-rows: 2fr auto 5fr 5fr 1fr;
-  grid-template-areas: '.' 'resume' 'projects' 'nav' 'footer';
-}
-
-/* media queries for other grid setups */
-
-@media screen and (min-width: 32rem) and (max-width: 48rem) {
-  main {
-    grid-template-columns: 3fr 2fr;
-    grid-template-rows: 1fr auto auto 1fr;
-    grid-template-areas: 'nav .' 'resume resume' 'projects projects' 'footer footer';
-  }
-}
-
-@media screen and (min-width: 48rem) {
-  main {
-    grid-template-columns: 4fr 1fr;
-    grid-template-rows: 5em 5em auto auto;
-    grid-template-areas: 'resume nav' 'resume projects' 'resume .' 'footer footer';
-  }
+  grid-template-rows: auto 66vh auto;
+  grid-template-areas:
+    'header header'
+    'projects projects'
+    'footer nav';
 }
 
 header {
   grid-area: header;
+}
+
+.theme-toggle {
+  grid-area: theme;
 }
 
 nav {
@@ -35,10 +24,19 @@ nav {
   grid-area: projects;
 }
 
-.resume {
-  grid-area: resume;
-}
-
 footer {
   grid-area: footer;
+}
+
+/* media queries for other grid setups */
+
+@media screen and (min-width: 48rem) {
+  main {
+    grid-template-columns: 6fr 4fr;
+    grid-template-rows: auto;
+    grid-auto-rows: auto;
+    grid-template-areas:
+      'projects header'
+      'footer nav';
+  }
 }
