@@ -9,6 +9,7 @@
     "classnames": "^2.2.6",
     "gatsby": "^2.1.27",
     "gatsby-image": "^2.0.31",
+    "gatsby-plugin-google-analytics": "^2.0.17",
     "gatsby-plugin-manifest": "^2.0.22",
     "gatsby-plugin-offline": "^2.0.24",
     "gatsby-plugin-postcss": "^2.0.5",
@@ -21,6 +22,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "react-ga": "^2.5.7",
     "react-helmet": "^5.2.0",
     "react-icons-kit": "^1.2.1",
     "react-markdown": "^4.0.6",
@@ -28,6 +30,7 @@
     "tailwindcss": "^0.7.4"
   },
   "devDependencies": {
+    "gh-pages": "^2.0.1",
     "prettier": "^1.16.4"
   },
   "keywords": [
@@ -37,6 +40,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
