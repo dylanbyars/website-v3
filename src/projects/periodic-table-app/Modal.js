@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-import A from '../../../components/A'
+import A from '../../components/A'
 
 const Modal = ({ element, closeModal }) => {
   const groupWikis = {

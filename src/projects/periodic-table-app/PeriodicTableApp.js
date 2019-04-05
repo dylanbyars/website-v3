@@ -3,8 +3,8 @@ import axios from 'axios'
 import classnames from 'classnames'
 import { GridLoader } from 'react-spinners'
 
-import ElementBlock from './components/ElementBlock'
-import Modal from './components/Modal'
+import ElementBlock from './ElementBlock'
+import Modal from './Modal'
 
 const PeriodicTableApp = () => {
   const [elements, setElements] = useState([])
