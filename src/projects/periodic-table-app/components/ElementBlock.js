@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState, useRef } from 'react'
 import ElementDetail from './ElementDetail'
 
 const groupBlockStyles = {
@@ -13,65 +13,68 @@ const groupBlockStyles = {
   lanthanoid: 'indigo-lightest',
   actinoid: 'green-lightest',
   ['probably metal']: 'grey-lightest',
-  ['probably noble gas']: 'grey-lighter'
+  ['probably noble gas']: 'grey-lighter',
 }
 
-class ElementBlock extends Component {
-  constructor(props) {
-    super(props)
+const ElementBlock = ({ element, setActiveElement }) => {
+  const [isHovered, setIsHovered] = useState(false)
+  const [offsetX, setOffsetX] = useState({})
+  const [offsetY, setOffsetY] = useState({})
 
-    this.state = {
-      isHovered: false,
-      offsetX: {},
-      offsetY: {}
-    }
-  }
+  const elementRef = useRef(null)
 
-  componentDidMount() {
-    const elementPosition = this.element.getBoundingClientRect()
+  const handleMouseOver = () => {
+    setIsHovered(true)
+
+    const elementPosition = elementRef.current.getBoundingClientRect()
     const viewportWidth = window.innerWidth
     const viewportHeight = window.innerHeight
 
-    const offsetX = elementPosition.x > viewportWidth / 2 ? { left: '-8rem' } : { right: '-8rem' }
-    const offsetY = elementPosition.y > viewportHeight / 2 ? { top: '-8rem' } : { bottom: '-8rem' }
+    const offsetX =
+      elementPosition.x > viewportWidth / 2
+        ? { left: '-8rem' }
+        : { right: '-8rem' }
 
-    this.setState({ offsetX, offsetY })
+    const offsetY =
+      elementPosition.y > viewportHeight / 2
+        ? { top: '-8rem' }
+        : { bottom: '-8rem' }
+
+    setOffsetX(offsetX)
+    setOffsetY(offsetY)
   }
 
-  handleMouseEnter = () => this.setState({ isHovered: true })
+  const handleMouseLeave = () => {
+    setIsHovered(false)
+    setOffsetX({})
+    setOffsetY({})
+  }
 
-  handleMouseLeave = () => this.setState({ isHovered: false })
-
-  render() {
-    const {
-      element: { atomicNumber, symbol, groupBlock },
-      setActiveElement
-    } = this.props
-
-    return (
+  return (
+    <div
+      className="relative"
+      ref={elementRef}
+      onClick={() => setActiveElement(element)}
+    >
       <div
-        className="relative"
-        ref={element => (this.element = element)}
-        onClick={() => setActiveElement(this.props.element)}
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseLeave}
+        className={`bg-${
+          groupBlockStyles[element.groupBlock]
+        } relative flex justify-center items-end border border-grey-dark rounded-sm w-12 h-12 m-1 cursor-pointer`}
       >
-        <div
-          onMouseOver={() => this.handleMouseEnter()}
-          onMouseLeave={() => this.handleMouseLeave()}
-          className={`bg-${
-            groupBlockStyles[groupBlock]
-          } relative flex justify-center items-end border border-grey-dark rounded-sm w-12 h-12 m-1 cursor-pointer`}
-        >
-          <small className="absolute pin-t pin-r pt-1 pr-1">{atomicNumber}</small>
-          <div className="mb-1 text-xl">{symbol}</div>
-        </div>
-        {this.state.isHovered && (
-          <div className="absolute" style={{ ...this.state.offsetY, ...this.state.offsetX }}>
-            <ElementDetail element={this.props.element} />
-          </div>
-        )}
+        <small className="absolute pin-t pin-r pt-1 pr-1">
+          {element.atomicNumber}
+        </small>
+        <div className="mb-1 text-xl">{element.symbol}</div>
       </div>
-    )
-  }
+      {isHovered && (
+        <div className="absolute" style={{ ...offsetY, ...offsetX }}>
+          <ElementDetail element={element} />
+        </div>
+      )}
+    </div>
+  )
 }
 
 export default ElementBlock

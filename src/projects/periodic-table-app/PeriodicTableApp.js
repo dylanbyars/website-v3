@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import classnames from 'classnames'
 import { GridLoader } from 'react-spinners'
@@ -6,18 +6,15 @@ import { GridLoader } from 'react-spinners'
 import ElementBlock from './components/ElementBlock'
 import Modal from './components/Modal'
 
-class PeriodicTableApp extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      elements: [],
-      activeElement: false,
-    }
-  }
+const PeriodicTableApp = () => {
+  const [elements, setElements] = useState([])
+  const [groups, setGroups] = useState([])
+  const [lanthanides, setLanthanides] = useState([])
+  const [actinides, setActinides] = useState([])
+  const [activeElement, setActiveElement] = useState(false)
 
   // launches an ajax request to the element data and stores that info in the PeriodicTable componenent's state
-  componentDidMount() {
+  useEffect(() => {
     axios
       .get('https://rawgit.com/dbyars/periodic-table-1/master/data.json')
       .then(({ data }) => {
@@ -78,111 +75,97 @@ class PeriodicTableApp extends Component {
         ]
 
         // const groupBlocks = data.reduce((acc, e) => (acc.includes(e.groupBlock) ? acc : [...acc, e.groupBlock]), [])
-
-        this.setState({
-          elements: data,
-          groups: groups.map(group => group.map(i => data[i - 1])),
-          lanthanides: lanthanides.map(i => data[i - 1]),
-          actinides: actinides.map(i => data[i - 1]),
-        })
+        setElements(data)
+        setGroups(groups.map(group => group.map(i => data[i - 1])))
+        setLanthanides(lanthanides.map(i => data[i - 1]))
+        setActinides(actinides.map(i => data[i - 1]))
       })
-  }
+  }, [])
 
-  setActiveElement = element => this.setState({ activeElement: element })
+  const clearActiveElement = () => setActiveElement(false)
 
-  clearActiveElement = () => this.setState({ activeElement: false })
-
-  render() {
-    return !this.state.elements.length ? (
-      <div className="min-h-screen flex justify-around items-center">
-        <GridLoader
-          loading={!this.state.elements.length}
-          size={60}
-          margin="20px"
-          color="#6574cd"
-        />
-      </div>
-    ) : (
+  return !elements.length ? (
+    <div className="min-h-screen flex justify-around items-center">
+      <GridLoader
+        loading={!elements.length}
+        size={60}
+        margin="20px"
+        color="#6574cd"
+      />
+    </div>
+  ) : (
+    <div
+      className="relative min-h-screen flex flex-col justify-around items-center bg-grey-lightest"
+      onKeyUp={e => e.key === 'Escape' && clearActiveElement()}
+      tabIndex="0"
+    >
+      <h1>Periodic Table of the Elements</h1>
       <div
-        className="relative min-h-screen flex flex-col justify-around items-center bg-grey-lightest"
-        onKeyUp={e => e.key === 'Escape' && this.clearActiveElement()}
-        tabIndex="0"
+        className={classnames(['flex', 'flex-col', { blur: activeElement }])}
       >
-        <h1>Periodic Table of the Elements</h1>
-        <div
-          className={classnames([
-            'flex',
-            'flex-col',
-            { blur: this.state.activeElement },
-          ])}
-        >
-          <div className="flex pb-6">
-            {this.state.groups.map((elements, i) =>
-              i !== 2 ? (
-                <div
-                  key={elements[0].atomicMass}
-                  className="flex flex-col justify-end"
-                >
-                  {elements.map(element => (
-                    <ElementBlock
-                      key={element.name}
-                      element={element}
-                      setActiveElement={this.setActiveElement}
-                    />
-                  ))}
+        <div className="flex pb-6">
+          {groups.map((elements, i) =>
+            i !== 2 ? (
+              <div
+                key={elements[0].atomicMass}
+                className="flex flex-col justify-end"
+              >
+                {elements.map(element => (
+                  <ElementBlock
+                    key={element.name}
+                    element={element}
+                    setActiveElement={setActiveElement}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div
+                key={elements[0].atomicMass}
+                className="flex flex-col justify-end"
+              >
+                {elements.map(element => (
+                  <ElementBlock
+                    key={element.name}
+                    element={element}
+                    setActiveElement={setActiveElement}
+                  />
+                ))}
+                <div className="flex justify-center items-center w-12 h-12 m-1 border border-grey-dark rounded-sm bg-indigo-lightest">
+                  <small>57-71</small>
                 </div>
-              ) : (
-                <div
-                  key={elements[0].atomicMass}
-                  className="flex flex-col justify-end"
-                >
-                  {elements.map(element => (
-                    <ElementBlock
-                      key={element.name}
-                      element={element}
-                      setActiveElement={this.setActiveElement}
-                    />
-                  ))}
-                  <div className="flex justify-center items-center w-12 h-12 m-1 border border-grey-dark rounded-sm bg-indigo-lightest">
-                    <small>57-71</small>
-                  </div>
-                  <div className="flex justify-center items-center w-12 h-12 m-1 border border-grey-dark rounded-sm bg-green-lightest">
-                    <small>89-103</small>
-                  </div>
+                <div className="flex justify-center items-center w-12 h-12 m-1 border border-grey-dark rounded-sm bg-green-lightest">
+                  <small>89-103</small>
                 </div>
-              )
-            )}
+              </div>
+            )
+          )}
+        </div>
+        <div className="flex flex-col">
+          <div className="flex justify-end">
+            {lanthanides.map(element => (
+              <ElementBlock
+                key={element.name}
+                element={element}
+                setActiveElement={setActiveElement}
+              />
+            ))}
           </div>
-          <div className="flex flex-col">
-            <div className="flex justify-end">
-              {this.state.lanthanides.map(element => (
-                <ElementBlock
-                  key={element.name}
-                  element={element}
-                  setActiveElement={this.setActiveElement}
-                />
-              ))}
-            </div>
-            <div className="flex justify-end">
-              {this.state.actinides.map(element => (
-                <ElementBlock
-                  key={element.name}
-                  element={element}
-                  setActiveElement={this.setActiveElement}
-                />
-              ))}
-            </div>
+          <div className="flex justify-end">
+            {actinides.map(element => (
+              <ElementBlock
+                key={element.name}
+                element={element}
+                setActiveElement={setActiveElement}
+              />
+            ))}
           </div>
         </div>
-        {this.state.activeElement && (
-          <Modal
-            element={this.state.activeElement}
-            closeModal={this.clearActiveElement}
-          />
-        )}
       </div>
-    )
-  }
+      {activeElement && (
+        <Modal element={activeElement} closeModal={clearActiveElement} />
+      )}
+    </div>
+  )
 }
 
 export default PeriodicTableApp
