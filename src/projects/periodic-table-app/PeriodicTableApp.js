@@ -99,7 +99,7 @@ const PeriodicTableApp = () => {
       onKeyUp={e => e.key === 'Escape' && clearActiveElement()}
       tabIndex="0"
     >
-      <h1>Periodic Table of the Elements</h1>
+      <h1 className="text-lg md:text-4xl">Periodic Table of the Elements</h1>
       <div
         className={classnames(['flex', 'flex-col', { blur: activeElement }])}
       >

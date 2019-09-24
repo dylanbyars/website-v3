@@ -3,17 +3,17 @@ import ElementDetail from './ElementDetail'
 
 const groupBlockStyles = {
   nonmetal: 'yellow-lightest',
-  ['noble gas']: 'blue-lighter',
-  ['alkali metal']: 'grey-light',
-  ['alkaline earth metal']: 'red-lighter',
+  'noble gas': 'blue-lighter',
+  'alkali metal': 'grey-light',
+  'alkaline earth metal': 'red-lighter',
   metalloid: 'orange-lighter',
   halogen: 'blue-lightest',
   metal: 'pink-lighter',
-  ['transition metal']: 'teal-lightest',
+  'transition metal': 'teal-lightest',
   lanthanoid: 'indigo-lightest',
   actinoid: 'green-lightest',
-  ['probably metal']: 'grey-lightest',
-  ['probably noble gas']: 'grey-lighter',
+  'probably metal': 'grey-lightest',
+  'probably noble gas': 'grey-lighter',
 }
 
 const ElementBlock = ({ element, setActiveElement }) => {
@@ -63,7 +63,7 @@ const ElementBlock = ({ element, setActiveElement }) => {
           groupBlockStyles[element.groupBlock]
         } relative flex justify-center items-end border border-grey-dark rounded-sm w-12 h-12 m-1 cursor-pointer`}
       >
-        <small className="absolute pin-t pin-r pt-1 pr-1">
+        <small className="absolute top-0 right-0 pt-1 pr-1">
           {element.atomicNumber}
         </small>
         <div className="mb-1 text-xl">{element.symbol}</div>

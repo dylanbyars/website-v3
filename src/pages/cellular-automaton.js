@@ -1,3 +1,3 @@
-import CellularAutomaton from '../projects/CellularAutomaton'
+import CellularAutomaton from '../projects/cellularAutomaton'
 
 export default CellularAutomaton

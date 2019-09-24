@@ -6,20 +6,32 @@ import A from '../../components/A'
 const Modal = ({ element, closeModal }) => {
   const groupWikis = {
     nonmetal: 'https://en.wikipedia.org/wiki/Nonmetal',
-    ['noble gas']: 'https://en.wikipedia.org/wiki/Noble_gas',
-    ['alkali metal']: 'https://en.wikipedia.org/wiki/Alkali_metal',
-    ['alkaline earth metal']:
+    'noble gas': 'https://en.wikipedia.org/wiki/Noble_gas',
+    'alkali metal': 'https://en.wikipedia.org/wiki/Alkali_metal',
+    'alkaline earth metal':
       'https://en.wikipedia.org/wiki/Alkaline_earth_metal',
     metalloid: 'https://en.wikipedia.org/wiki/Metalloid',
     halogen: 'https://en.wikipedia.org/wiki/Halogen',
     metal: 'https://en.wikipedia.org/wiki/Post-transition_metal',
-    ['transition metal']: 'https://en.wikipedia.org/wiki/Transition_metal',
+    'transition metal': 'https://en.wikipedia.org/wiki/Transition_metal',
     lanthanoid: 'https://en.wikipedia.org/wiki/Lanthanide',
     actinoid: 'https://en.wikipedia.org/wiki/Actinide',
   }
 
-  const makePeriodicVideoLink = () => {
-    const { atomicNumber } = element
+  const {
+    name,
+    atomicNumber,
+    atomicMass,
+    standardState,
+    meltingPoint,
+    boilingPoint,
+    groupBlock,
+    electronicConfiguration,
+    yearDiscovered,
+    wiki,
+  } = element
+
+  const periodicVideoLink = (() => {
     const formattedNumber = () => {
       if (atomicNumber < 10) {
         return `00${atomicNumber}`
@@ -30,19 +42,15 @@ const Modal = ({ element, closeModal }) => {
       }
     }
     return `http://periodicvideos.com/videos/${formattedNumber()}.htm`
-  }
+  })()
 
   const [wikiSummary, setWikiSummary] = useState('')
   const [wikiImage, setWikiImage] = useState('')
-  const [groupWiki, setGroupWiki] = useState(groupWikis[element.groupBlock])
-  const [periodicVideoLink, setPeriodicVideoLink] = useState(
-    makePeriodicVideoLink()
-  )
 
   useEffect(() => {
     // pull the last bit of the wiki url off
     const regex = /wiki\/(.*)/g
-    const url = element.wiki
+    const url = wiki
     const wikiTitle = regex.exec(url)[1]
 
     const wikiData = `https://en.wikipedia.org/api/rest_v1/page/summary/${wikiTitle}`
@@ -51,19 +59,7 @@ const Modal = ({ element, closeModal }) => {
       setWikiSummary(data.extract)
       setWikiImage(data.thumbnail ? data.thumbnail.source : '')
     })
-  }, [])
-
-  const {
-    name,
-    atomicMass,
-    standardState,
-    meltingPoint,
-    boilingPoint,
-    groupBlock,
-    electronicConfiguration,
-    yearDiscovered,
-    wiki,
-  } = element
+  }, [wiki])
 
   return (
     <div
@@ -76,7 +72,7 @@ const Modal = ({ element, closeModal }) => {
           onClick={e => e.stopPropagation()}
         >
           <button
-            className="absolute pin-t pin-r mr-4 mt-4 px-2 py-1 rounded-full trans trans-fast border border-indigo-light hover:border-indigo-dark text-indigo-light hover:text-indigo-dark hover text-sm"
+            className="absolute top-0 right-0 mr-4 mt-4 px-2 py-1 rounded-full trans trans-fast border border-indigo-light hover:border-indigo-dark text-indigo-light hover:text-indigo-dark hover text-sm"
             onClick={() => closeModal()}
           >
             close
@@ -87,8 +83,8 @@ const Modal = ({ element, closeModal }) => {
             <div className="flex flex-col justify-between ">
               <div className="flex my-1">
                 <p className="mr-1 font-semibold">Group:</p>
-                {groupWiki ? (
-                  <A classes={['capitalize']} href={groupWiki}>
+                {groupWikis[groupBlock] ? (
+                  <A classes={['capitalize']} href={groupWikis[groupBlock]}>
                     {groupBlock}
                   </A>
                 ) : (
@@ -161,7 +157,7 @@ const Modal = ({ element, closeModal }) => {
             {wikiSummary}
           </p>
 
-          <div className="absolute pin-b pin-r mr-4 mb-4">
+          <div className="absolute bottom-0 right-0 mr-4 mb-4">
             <A classes={['text-sm']} href={wiki}>
               Wikipedia
             </A>
