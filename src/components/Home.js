@@ -1,12 +1,10 @@
 import React from 'react'
 import classnames from 'classnames'
-
-// import SliderToggle from './SliderToggle'
 import Projects from './Projects'
 import Nav from './Nav'
 import Footer from './Footer'
 
-const Home = (theme = 'dark') => (
+const Home = () => (
   <main
     className={classnames([
       'min-h-screen p-3 font-mono',
