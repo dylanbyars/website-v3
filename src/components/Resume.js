@@ -6,7 +6,7 @@ const resume = `
 
 Software Engineer with a focus on front end web application development.
 
-js · html · css/scss · react · angularjs · webpack · scala · selenide · git
+js/ts · html · css/scss · react · angularjs · webpack · scala · selenide · git
 
 ---
 
