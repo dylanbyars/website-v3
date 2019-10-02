@@ -3,7 +3,7 @@ import PageContainer from '../components/PageContainer'
 import Home from '../components/Home'
 
 export default () => (
-  <PageContainer title="Dylan Byars | Software Engineer">
+  <PageContainer title="Software Engineer">
     <Home />
   </PageContainer>
 )

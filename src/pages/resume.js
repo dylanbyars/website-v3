@@ -3,7 +3,7 @@ import PageContainer from '../components/PageContainer'
 import Resume from '../components/Resume'
 
 export default () => (
-  <PageContainer title="Dylan Byars | Resume">
+  <PageContainer title="Resume">
     <Resume />
   </PageContainer>
 )
