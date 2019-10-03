@@ -66,9 +66,7 @@ const Resume = () => {
         ))}
       </section>
       <br />
-      <footer>
-        <a href={basics.website}>{basics.website}</a>
-      </footer>
+      <footer>{basics.website}</footer>
     </main>
   )
 }
