@@ -7,7 +7,7 @@ import Footer from './Footer'
 const Home = () => (
   <main
     className={classnames([
-      'min-h-screen p-3 font-mono',
+      'home min-h-screen p-3 font-mono',
       { 'bg-black text-grey-lightest': true },
     ])}
   >

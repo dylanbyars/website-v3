@@ -4,11 +4,6 @@
 @import 'grid.css';
 @import 'periodicTable.css';
 @import 'cellularAutomaton.css';
-@import 'markdown.css';
-
-a {
-  text-decoration: none;
-}
 
 .link,
 .link:visited {
