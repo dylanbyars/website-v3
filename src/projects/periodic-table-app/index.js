@@ -95,7 +95,7 @@ const PeriodicTableApp = () => {
     </div>
   ) : (
     <div
-      className="relative min-h-screen flex flex-col justify-around items-center bg-grey-lightest"
+      className="relative min-h-screen flex flex-col justify-around items-center"
       onKeyUp={e => e.key === 'Escape' && clearActiveElement()}
       tabIndex="0"
     >

@@ -68,7 +68,7 @@ const Modal = ({ element, closeModal }) => {
     >
       {wikiSummary && (
         <div
-          className="flex justify-between relative w-2/3 border bg-grey-lightest shadow-lg p-5"
+          className="flex justify-between relative w-3/4 border bg-white shadow-lg p-5 max-h-3/4 overflow-auto"
           onClick={e => e.stopPropagation()}
         >
           <button
@@ -78,7 +78,7 @@ const Modal = ({ element, closeModal }) => {
             close
           </button>
           <div className="w-1/2 flex flex-col justify-around items-center">
-            <h1>{name}</h1>
+            <h1 className="text-3xl">{name}</h1>
             {wikiImage && <img src={wikiImage} alt={name} className="my-3" />}
             <div className="flex flex-col justify-between ">
               <div className="flex my-1">
@@ -153,7 +153,7 @@ const Modal = ({ element, closeModal }) => {
             </div>
           </div>
 
-          <p className="w-1/2 my-auto px-10 font-light leading-normal">
+          <p className="w-1/2 my-auto px-10 font-light max-h-1/2">
             {wikiSummary}
           </p>
 
