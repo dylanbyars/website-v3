@@ -14,7 +14,9 @@ const Basics = ({ name, email, summary }) => (
 const Skills = ({ skills }) => (
   <ul className="flex flex-wrap justify-center mt-6">
     {skills.map(s => (
-      <li className="text-lg mx-4">{s}</li>
+      <li className="text-lg mx-4" key={s}>
+        {s}
+      </li>
     ))}
   </ul>
 )
@@ -31,7 +33,9 @@ const Job = ({ company, position, website, highlights }) => (
     <h5 className="text-lg italic my-4">{position}</h5>
     <ul>
       {highlights.map(h => (
-        <li className="mb-4">* {h}</li>
+        <li className="mb-4" key={h.slice(0, 10)}>
+          * {h}
+        </li>
       ))}
     </ul>
   </article>
@@ -54,7 +58,7 @@ const Resume = () => {
       <section>
         {work.map((job, i) => (
           <>
-            <Job {...job} />
+            <Job key={job.company} {...job} />
             {i < work.length - 1 && <br />}
           </>
         ))}
@@ -62,7 +66,7 @@ const Resume = () => {
       <br />
       <section>
         {education.map(school => (
-          <School {...school} />
+          <School key={school.institution} {...school} />
         ))}
       </section>
       <br />
