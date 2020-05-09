@@ -1,13 +1,12 @@
 {
-  "name": "gatsby-starter-default",
-  "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "name": "dylan-byars-portfolio",
+  "description": "The portfolio of Dylan Byars",
+  "version": "1.0.0",
+  "author": "Dylan Byars <dylan@dylanbyars.com>",
   "dependencies": {
     "axios": "^0.18.1",
     "classnames": "^2.2.6",
-    "gatsby": "^2.15.21",
+    "gatsby": "^2.21.21",
     "gatsby-image": "^2.2.20",
     "gatsby-plugin-google-analytics": "^2.1.17",
     "gatsby-plugin-manifest": "^2.2.18",
@@ -26,17 +25,16 @@
     "tailwindcss": "^1.1.2"
   },
   "devDependencies": {
-    "gh-pages": "^2.1.1",
     "prettier": "^1.18.2"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "portfolio"
   ],
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
@@ -45,8 +43,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/dylanbyars/db2"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }
