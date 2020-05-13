@@ -3,7 +3,6 @@
 @tailwind utilities;
 @import 'grid.css';
 @import 'periodicTable.css';
-/* @import 'cellularAutomaton.css'; */
 
 .link,
 .link:visited {
