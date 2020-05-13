@@ -2,7 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 
 export default ({ title, children }) => (
-  <>
+  <div>
     <Helmet title={`Dylan Byars | ${title}`}>
       <link
         rel="icon"
@@ -10,5 +10,5 @@ export default ({ title, children }) => (
       />
     </Helmet>
     {children}
-  </>
+  </div>
 )
